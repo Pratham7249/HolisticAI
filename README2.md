@@ -50,13 +50,20 @@ Before you begin, ensure you have the following installed on your system:
  3.  **If cause error **
     If the server casuing error is then use:
     ```
-    netstat -ano | findstr :3000
-     taskkill /PID (no. of task that you want to terminate) /F (lets say we take 27844) 
-     taskkill /PID 27844 /F
-     node new/app.js
+    netstat -ano | findstr :3000 
     ```
+ ```
+     taskkill /PID 27844 /F
+    ```
+ ```
+    taskkill /PID (no. of task that you want to terminate) /F (lets say we take 27844) 
+    ```
+ ```
+    node new/app.js
+    ```
+    
 
-
+ taskkill /PID (no. of task that you want to terminate) /F (lets say we take 27844) 
 ## Description of the Application
 
 This application offers various features related to holistic health and wellness, as seen in the provided image. These include:
