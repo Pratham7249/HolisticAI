@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Mental Health Monitoring</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff; /* Light blue background */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+        /* .navbar {
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0000FF; /* Blue border at the bottom of navbar */
+        }
+        .navbar-brand {
+            color: #0000FF !important; /* Blue brand color */
+            font-weight: bold;
+        }
+        .nav-link {
+            color: #0000FF !important; /* Blue link color */
+        }
+        .nav-link:hover {
+            color: #4169E1 !important; /* Slightly lighter blue on hover */
+        } */
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border: 1px solid #0000FF; /* Blue border around the form */
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 95%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        h2 {
+            text-align: center;
+            color: #0000FF; /* Blue heading color */
+            margin-bottom: 30px;
+            border-bottom: 3px double #ADD8E6; /* Light blue double border below heading */
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #0000FF; /* Blue subheading color */
+            margin-top: 20px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ADD8E6; /* Light blue border below subheading */
+            padding-bottom: 5px;
+        }
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 2px dotted #ADD8E6; /* Light blue dotted border between sections */
+        }
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+            color: #0000FF; /* Blue label color */
+        }
+        .form-control,
+        .form-select {
+            border: 1px solid #0000FF; /* Blue border for input fields and select boxes */
+            border-radius: 5px;
+            padding: 0.75rem;
+        }
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #4169E1; /* Slightly lighter blue on focus */
+            box-shadow: 0 0 0 0.25rem rgba(0, 0, 255, 0.25); /* Blue shadow on focus */
+        }
+        .form-check-input:checked {
+            background-color: #0000FF; /* Blue color for checked checkboxes/radios */
+            border-color: #0000FF;
+        }
+        .form-check-label {
+            color: #555;
+            margin-left: 5px;
+        }
+        .btn-primary {
+            background-color: #0000FF !important; /* Blue background for the primary button */
+            border-color: #0000FF !important;
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #4169E1 !important; /* Slightly lighter blue on hover */
+            border-color: #4169E1 !important;
+        }
+        .form-text {
+            color: #6c757d;
+            font-size: 0.875em;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="form-container">
+        <h2 class="mb-4">AI-Powered Mental Health Monitoring</h2>
+
+        <form action="/submit-mental-health-info" method="post" class="row g-3">
+            <div class="form-section col-md-12">
+                <h3>Basic Information</h3>
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Your Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Your Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+            </div>
+
+            <div class="form-section col-md-12">
+                <h3>Current Mental State</h3>
+                <div class="col-md-6">
+                    <label for="mood" class="form-label">How would you describe your mood today?</label>
+                    <select id="mood" name="mood" class="form-select">
+                        <option value="">Select...</option>
+                        <option value="veryHappy">Very Happy</option>
+                        <option value="happy">Happy</option>
+                        <option value="neutral">Neutral</option>
+                        <option value="sad">Sad</option>
+                        <option value="verySad">Very Sad</option>
+                        <option value="anxious">Anxious</option>
+                        <option value="irritable">Irritable</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" class="form-control mt-2" id="otherMoodText" name="otherMoodText" placeholder="Specify other mood">
+                </div>
+                <div class="col-md-6">
+                    <label for="energyLevels" class="form-label">How would you rate your energy levels today?</label>
+                    <select id="energyLevels" name="energyLevels" class="form-select">
+                        <option value="">Select...</option>
+                        <option value="veryHigh">Very High</option>
+                        <option value="high">High</option>
+                        <option value="moderate">Moderate</option>
+                        <option value="low">Low</option>
+                        <option value="veryLow">Very Low</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label for="overallFeeling" class="form-label">Overall, how are you feeling emotionally today?</label>
+                    <textarea class="form-control" id="overallFeeling" name="overallFeeling" rows="2" placeholder="Please describe your overall emotional state."></textarea>
+                </div>
+            </div>
+
+            <div class="form-section col-md-12">
+                <h3>Sleep Patterns</h3>
+                <div class="col-md-6">
+                    <label for="sleepQuality" class="form-label">How would you rate the quality of your sleep last night?</label>
+                    <select id="sleepQuality" name="sleepQuality" class="form-select">
+                        <option value="">Select...</option>
+                        <option value="veryGood">Very Good</option>
+                        <option value="good">Good</option>
+                        <option value="average">Average</option>
+                        <option value="poor">Poor</option>
+                        <option value="veryPoor">Very Poor</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="hoursSlept" class="form-label">Approximately how many hours did you sleep last night?</label>
+                    <input type="number" class="form-control" id="hoursSlept" name="hoursSlept" placeholder="Enter number of hours">
+                </div>
+            </div>
+
+            <div class="form-section col-md-12">
+                <h3>Stress and Coping</h3>
+                <div class="col-md-6">
+                    <label for="stressLevelMentalHealth" class="form-label">On a scale of 1 to 10 (1 being no stress, 10 being the highest), how stressed have you felt in the past 24 hours?</label>
+                    <input type="number" class="form-control" id="stressLevelMentalHealth" name="stressLevelMentalHealth" min="1" max="10" placeholder="Enter a number between 1 and 10">
+                </div>
+                <div class="col-md-6">
+                    <label for="copingMechanisms" class="form-label">What methods do you typically use to cope with stress or difficult emotions?</label>
+                    <textarea class="form-control" id="copingMechanisms" name="copingMechanisms" rows="2" placeholder="e.g., exercise, talking to someone, hobbies"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section col-md-12">
+                <h3>Social Interactions</h3>
+                <div class="col-md-6">
+                    <label for="socialInteraction" class="form-label">Have you had meaningful social interactions with friends or family today?</label>
+                    <select id="socialInteraction" name="socialInteraction" class="form-select">
+                        <option value="">Select...</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="some">Some</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="feelingOfConnection" class="form-label">How would you rate your feeling of connection to others today?</label>
+                    <select id="feelingOfConnection" name="feelingOfConnection" class="form-select">
+                        <option value="">Select...</option>
+                        <option value="veryConnected">Very Connected</option>
+                        <option value="connected">Connected</option>
+                        <option value="neutral">Neutral</option>
+                        <option value="somewhatDisconnected">Somewhat Disconnected</option>
+                        <option value="veryDisconnected">Very Disconnected</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section col-md-12">
+                <h3>Daily Activities and Habits</h3>
+                <div class="col-md-6">
+                    <label for="engagementInActivities" class="form-label">Were you able to engage in your usual daily activities today?</label>
+                    <select id="engagementInActivities" name="engagementInActivities" class="form-select">
+                        <option value="">Select...</option>
+                        <option value="yes">Yes, fully</option>
+                        <option value="partially">Partially</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="appetite" class="form-label">How would you describe your appetite today?</label>
+                    <select id="appetite" name="appetite" class="form-select">
+                        <option value="">Select...</option>
+                        <option value="normal">Normal</option>
+                        <option value="increased">Increased</option>
+                        <option value="decreased">Decreased</option>
+                        <option value="noAppetite">No appetite</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section col-md-12">
+                <h3>Existing Mental Health Concerns (Optional)</h3>
+                <div class="col-md-12">
+                    <label for="mentalHealthConcerns" class="form-label">Do you have any diagnosed mental health conditions or any specific concerns you'd like to share?</label>
+                    <textarea class="form-control" id="mentalHealthConcerns" name="mentalHealthConcerns" rows="3" placeholder="This information is optional but can be helpful."></textarea>
+                </div>
+            </div>
+
+            <div class="form-section col-md-12">
+                <h3>Goals for Mental Well-being</h3>
+                <div class="col-md-12">
+                    <label for="mentalHealthGoals" class="form-label">What are your primary goals for your mental well-being?</label>
+                    <textarea class="form-control" id="mentalHealthGoals" name="mentalHealthGoals" rows="3" placeholder="e.g., reduce anxiety, improve mood, increase resilience"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section col-md-12">
+                <h3>Additional Information</h3>
+                <div class="col-12">
+                    <label for="additionalInfo" class="form-label">Any Other Relevant Information:</label>
+                    <textarea class="form-control" id="additionalInfo" name="additionalInfo" rows="4" placeholder="Please provide any other details that might be helpful for the AI to monitor your mental health."></textarea>
+                </div>
+            </div>
+
+            <div class="col-12 mt-4">
+                <button type="submit" class="btn btn-primary">Submit Mental Health Check-in</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

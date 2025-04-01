@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Health and Wellness Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Minimal custom styles if needed */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #a7f29c; /* Light green background */
+            color: #333;
+            display: flex;
+            flex-direction: column; /* Ensure the navbar stays at the top */
+            justify-content: flex-start; /* Align items to the start of the flex container */
+            padding: 20px; /* Add some padding around the body */
+            margin: 0;
+            min-height: 100vh; /* To make sure the background covers the viewport */
+        }
+        
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 95%; /* Adjust width as needed */
+            max-width: 1200px; /* Adjust max-width as needed */
+            margin: 20px auto; /* Center the form container and add some top/bottom margin */
+        }
+        h2 {
+            text-align: center;
+            color: #75ccbc; /* Teal heading color */
+            margin-bottom: 30px;
+            border-bottom: 3px double #a7f29c; /* Light green double border below heading */
+            padding-bottom: 10px;
+        }
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 2px dotted #a7f29c; /* Light green dotted border between sections */
+        }
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        h3 {
+            color: #75ccbc; /* Teal subheading color */
+            margin-top: 20px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #a7f29c; /* Light green border below subheading */
+            padding-bottom: 5px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+            color: #5b965e; /* Dark green label color */
+        }
+        .form-control,
+        .form-select {
+            border: 1px solid #75ccbc; /* Teal border for input fields and select boxes */
+            border-radius: 5px;
+            padding: 0.75rem;
+        }
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #5b965e; /* Dark green on focus */
+            box-shadow: 0 0 0 0.25rem rgba(117, 204, 188, 0.25); /* Teal shadow on focus */
+        }
+        .form-check-input:checked {
+            background-color: #75ccbc; /* Teal color for checked checkboxes/radios */
+            border-color: #75ccbc;
+        }
+        .form-check-label {
+            color: #555;
+            margin-left: 5px;
+        }
+        .btn-primary {
+            background-color: #75ccbc !important; /* Teal background for the primary button */
+            border-color: #75ccbc !important;
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #5b965e !important; /* Dark green on hover */
+            border-color: #5b965e !important;
+        }
+        .form-text {
+            color: #6c757d;
+            font-size: 0.875em;
+            margin-top: 0.25rem;
+        }
+        .alert-danger {
+            background-color: #ff9999; /* Light red for error/alert */
+            color: #fff;
+            border-color: #ff9999;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="form-container">
+        <h2 class="mb-4 ">Detailed Health and Wellness Assessment</h2>
+
+        <form action="/submit-detailed-info" method="post" class="row g-3">
+            <div class="form-section col-md-12">
+                <h3>Basic Information</h3>
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Your Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Your Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="age" class="form-label">Your Age:</label>
+                    <input type="number" class="form-control" id="age" name="age" placeholder="Enter your age" min="1" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="gender" class="form-label">Gender:</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="male" name="gender" value="male">
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="female" name="gender" value="female">
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="other" name="gender" value="other">
+                        <label class="form-check-label" for="other">Other</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="occupation" class="form-label">Occupation:</label>
+                    <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Your current occupation">
+                </div>
+            </div>
+
+            <div class="form-section col-md-12">
+                <h3>Dietary Preferences</h3>
+                <div class="col-md-3">
+                    <label for="height" class="form-label">Height (cm):</label>
+                    <input type="number" class="form-control" id="height" name="height" placeholder="Enter your height in centimeters">
+                </div>
+                <div class="col-md-3">
+                    <label for="weight" class="form-label">Weight (kg):</label>
+                    <input type="number" class="form-control" id="weight" name="weight" placeholder="Enter your weight in kilograms">
+                </div>
+                <div class="col-md-6">
+                    <label for="mealFrequency" class="form-label">Typical Meal Frequency:</label>
+                    <select id="mealFrequency" name="mealFrequency" class="form-select">
+                        <option value="">Select...</option>
+                        <option value="3">3 meals a day</option>
+                        <option value="4">4 meals a day</option>
+                        <option value="5">5 meals a day</option>
+                        <option value="more">More than 5 meals a day</option>
+                        <option value="irregular">Irregular</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">Dietary Restrictions:</label>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="vegetarian" name="dietaryRestrictions" value="vegetarian">
+                        <label class="form-check-label" for="vegetarian">Vegetarian</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="vegan" name="dietaryRestrictions" value="vegan">
+                        <label class="form-check-label" for="vegan">Vegan</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="glutenFree" name="dietaryRestrictions" value="glutenFree">
+                        <label class="form-check-label" for="glutenFree">Gluten-Free</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="lactoseFree" name="dietaryRestrictions" value="lactoseFree">
+                        <label class="form-check-label" for="lactoseFree">Lactose-Free</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="otherRestrictions" name="dietaryRestrictions" value="other">
+                        <label class="form-check-label" for="otherRestrictions">Other</label>
+                    </div>
+                    <input type="text" class="form-control mt-2" id="otherRestrictionsText" name="otherRestrictionsText" placeholder="Specify other restrictions">
+                </div>
+            </div>
+
+            <div class="form-section col-md-12">
+                <h3>Fitness Goals and Habits</h3>
+                <div class="col-md-6">
+                    <label for="activityLevel" class="form-label">Average Weekly Activity Level (1-5, 5 being very active):</label>
+                    <input type="number" class="form-control" id="activityLevel" name="activityLevel" min="1" max="5" placeholder="Enter a number between 1 and 5">
+                </div>
+                <div class="col-md-6">
+                    <label for="primaryFitnessGoal" class="form-label">Primary Fitness Goal:</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="weightLoss" name="primaryFitnessGoal" value="weightLoss">
+                        <label class="form-check-label" for="weightLoss">Weight Loss</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="muscleGain" name="primaryFitnessGoal" value="muscleGain">
+                        <label class="form-check-label" for="muscleGain">Muscle Gain</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="improveEndurance" name="primaryFitnessGoal" value="improveEndurance">
+                        <label class="form-check-label" for="improveEndurance">Improve Endurance</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="overallHealth" name="primaryFitnessGoal" value="overallHealth">
+                        <label class="form-check-label" for="overallHealth">Overall Health and Wellness</label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">Preferred Workout Types:</label>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="cardio" name="preferredWorkouts" value="cardio">
+                        <label class="form-check-label" for="cardio">Cardio (Running, Cycling, etc.)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="strengthTraining" name="preferredWorkouts" value="strengthTraining">
+                        <label class="form-check-label" for="strengthTraining">Strength Training (Weights)</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="yogaPilates" name="preferredWorkouts" value="yogaPilates">
+                        <label class="form-check-label" for="yogaPilates">Yoga or Pilates</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="sports" name="preferredWorkouts" value="sports">
+                        <label class="form-check-label" for="sports">Team or Individual Sports</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="otherWorkouts" name="preferredWorkouts" value="other">
+                        <label class="form-check-label" for="otherWorkouts">Other</label>
+                    </div>
+                    <input type="text" class="form-control mt-2" id="otherWorkoutsText" name="otherWorkoutsText" placeholder="Specify other workouts">
+                </div>
+            </div>
+
+            <div class="form-section col-md-12">
+                <h3>Stress Management Habits</h3>
+                <div class="col-md-12">
+                    <label class="form-label">Stress Management Techniques You Currently Use (Check all that apply):</label>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="meditation" name="stressManagement" value="meditation">
+                        <label class="form-check-label" for="meditation">Meditation or Mindfulness</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="exercise" name="stressManagement" value="exercise">
+                        <label class="form-check-label" for="exercise">Regular Exercise</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="hobbies" name="stressManagement" value="hobbies">
+                        <label class="form-check-label" for="hobbies">Engaging in Hobbies</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="socializing" name="stressManagement" value="socializing">
+                        <label class="form-check-label" for="socializing">Spending Time with Loved Ones</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="reading" name="stressManagement" value="reading">
+                        <label class="form-check-label" for="reading">Reading</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="otherStressManagement" name="stressManagement" value="other">
+                        <label class="form-check-label" for="otherStressManagement">Other</label>
+                    </div>
+                    <input type="text" class="form-control mt-2" id="otherStressManagementText" name="otherStressManagementText" placeholder="Specify other techniques">
+                </div>
+                <div class="col-12">
+                    <label for="additionalInfo" class="form-label">Any Other Relevant Information:</label>
+                    <textarea class="form-control" id="additionalInfo" name="additionalInfo" rows="4" placeholder="Please provide any other details that might be helpful for your recommendations."></textarea>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" style="background-color: #0000FF; border-color: #28a745;">Submit Assessment</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <div>
+        <p>The primary function of this form is to collect detailed information about an individual's health, wellness habits, preferences, and goals. This data can then be used for various purposes, such as:
+
+            Personalized Recommendations: Based on the information provided, a system or healthcare professional could offer tailored diet plans, fitness routines, stress management techniques, or other wellness advice.
+            Progress Tracking: If this form is filled out periodically, it can help track changes in the user's health and wellness over time.
+            Research and Analysis: Aggregated and anonymized data from such forms can be used for research purposes in the field of health and wellness.
+            Initial Consultation:</p>
+    </div>
+</body>
+</html>
