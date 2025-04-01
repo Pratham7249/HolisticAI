@@ -1,0 +1,94 @@
+.fixed-bottom {
+    width: 100%; /* Ensure it spans the entire width */
+    z-index: 1000; /* Make sure it's above other elements if they might overlap */
+    /* You can also try removing position: fixed and see if that helps in your layout */
+    /* position: static; */
+}
+
+.bg-light {
+    background-color: #f8f9fa !important; /* Ensure the background color is set */
+}
+
+.text-center {
+    text-align: center !important; /* Keep the text centered */
+}
+
+.py-4 {
+    padding-top: 1rem !important; /* Adjust top padding if needed */
+    padding-bottom: 1rem !important; /* Adjust bottom padding if needed */
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-md-6 {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    /* For larger screens, take up half the width and center */
+}
+@media (min-width: 768px) {
+    .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+.mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.social-icons a {
+    color: #495057; /* Adjust social icon color */
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+.f-info {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+.f-info-links a {
+    color: #343a40;
+    text-decoration: none;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.me-3 {
+    margin-right: 1rem !important;
+}
+
+.ms-2 {
+    margin-left: 0.5rem !important;
+}
+
+.mb-1 {
+    margin-bottom: 0.25rem !important;
+}

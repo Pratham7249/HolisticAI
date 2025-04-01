@@ -1,0 +1,47 @@
+/* Original content of holographic.css before changes */
+.holographic-card-container:hover {
+    background-color: #e0ffe0; /* Light green color */
+    padding: 10px; /* Optional: Add some padding around the card */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+.status-card-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px; /* Add some space between the cards */
+    padding: 15px; /* Optional: Add padding around the container */
+}
+
+.status-card {
+    background-color: #f8f9fa; /* Optional: A light background for the cards */
+    border-radius: 8px; /* Optional: Rounded corners for the cards */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.status-card:hover {
+    transform: translateY(-5px); /* Move the card up slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow on hover */
+}
+
+/* Add margin to the upload card to prevent overlap with footer */
+.card.bg-light {
+    margin-bottom: 100px; /* Adjust this value as needed */
+}
+
+.how {
+    display: flex; /* Enable flexbox for the 'how' row */
+    justify-content: center; /* Center the content horizontally within the row */
+}
+
+.status-card {
+    flex: 1; /* Distribute available space equally among the cards */
+    margin: 0 5px; /* Add some horizontal margin between the cards */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Ensure the flex items within the row are centered */
+.how > div {
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly around the items */
+    width: 100%; /* Make the inner div take full width of the row */
+}
